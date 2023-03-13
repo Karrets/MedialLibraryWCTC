@@ -1,4 +1,4 @@
-namespace Lab; 
+namespace Lab.Media; 
 
 public class Media {
     // public properties
@@ -18,5 +18,9 @@ public class Media {
     public string Display()
     {
         return $"Id: {MediaId}\nTitle: {Title}\nGenres: {string.Join(", ", Genres)}\n";
+    }
+
+    public override string ToString() {
+        return Display();
     }
 }
