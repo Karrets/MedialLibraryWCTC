@@ -1,6 +1,6 @@
 namespace Lab.Media; 
 
-public class Media {
+public abstract class Media {
     // public properties
     public ulong MediaId { get; set; }
     public string Title { get; set; }
@@ -15,7 +15,7 @@ public class Media {
     }
 
     // public method
-    public string Display()
+    public virtual string Display()
     {
         return $"Id: {MediaId}\nTitle: {Title}\nGenres: {string.Join(", ", Genres)}\n";
     }
