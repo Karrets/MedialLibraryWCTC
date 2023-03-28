@@ -13,4 +13,8 @@ public class Movie : Media {
         return
             $"Id: {MediaId}\nTitle: {Title}\nDirector: {Director}\nRun time: {RunningTime}\nGenres: {string.Join(", ", Genres)}\n";
     }
+
+    public override string ToString() {
+        return base.ToString() + $"{Director},{RunningTime}";
+    }
 }

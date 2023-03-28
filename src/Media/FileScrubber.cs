@@ -24,7 +24,9 @@ public static class FileScrubber {
                     ? new StreamWriter(writeFile)
                     : new StreamWriter(stream, System.Text.Encoding.Default, -1, true);
                 // open read file
-                var sr = new StreamReader(readFile);
+                var sr = File.Exists(writeFile)
+                    ? new StreamReader(writeFile)
+                    : new StreamReader(readFile);
                 // remove first line - column headers
                 sr.ReadLine();
                 while(!sr.EndOfStream) {
@@ -80,5 +82,12 @@ public static class FileScrubber {
         }
 
         return "";
+    }
+
+    public static StreamWriter WriteHead(string readFile = "movies.csv") {
+        string ext = readFile.Split('.').Last();
+        string writeFile = readFile.Replace(ext, $"scrubbed.{ext}");
+        return new(
+            new FileStream(writeFile, FileMode.Append));
     }
 }

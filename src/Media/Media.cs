@@ -21,6 +21,6 @@ public abstract class Media {
     }
 
     public override string ToString() {
-        return Display();
+        return $"{MediaId},{Title},{string.Join("|", Genres)}";
     }
 }
