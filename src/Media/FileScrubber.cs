@@ -24,9 +24,10 @@ public static class FileScrubber {
                     ? new StreamWriter(writeFile)
                     : new StreamWriter(stream, System.Text.Encoding.Default, -1, true);
                 // open read file
-                var sr = File.Exists(writeFile)
-                    ? new StreamReader(writeFile)
-                    : new StreamReader(readFile);
+                var sr = new StreamReader(readFile);
+                // var sr = File.Exists(writeFile)
+                    // ? new StreamReader(writeFile)
+                    // : new StreamReader(readFile);
                 // remove first line - column headers
                 sr.ReadLine();
                 while(!sr.EndOfStream) {
